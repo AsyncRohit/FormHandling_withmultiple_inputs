@@ -23,6 +23,13 @@ const App = () => {
     setdetails("");
     console.log(arr);
   };
+
+ const deleteHandler = (id) => {
+    // setallUsers(allUsers.filter((_, index) => index !== id));
+    const copyArr=[...allUsers]
+    copyArr.splice(id,1);
+    setallUsers(copyArr);
+  };
   return (
     <div className="bg-gray-400 h-screen w-full">
       <form
@@ -78,7 +85,11 @@ const App = () => {
             <p className="text-xl text-black mt-2">{elem.details}</p>
             </div>
             <div>
-              <button className="bg-red-500 px-4 py-2 rounded-md mb-4 text-white">Delete Profile</button>
+              <button 
+              onClick={()=>{
+                deleteHandler(index);
+              }}
+              className="bg-red-500 px-4 py-2 rounded-md mb-4 text-white">Delete Profile</button>
               <button className="bg-green-500 px-4 py-2 rounded-md mb-4 text-white">Edit Profile </button>
             </div>
           </div>
